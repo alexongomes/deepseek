@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laboratório - Modelo Deepseek Local</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+      h1 {
+        color: #333;
+      }
+      form {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      input[type="text"] {
+        flex: 1;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #45a049;
+      }
+      #response {
+        margin-top: 20px;
+        padding: 15px;
+        background-color: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        white-space: pre-wrap;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pergunte ao DeepSeek - Modelo rodando localmente (Alexon)</h1>
+    <form method="POST" action="/ask">
+      <input
+        type="text"
+        name="question"
+        placeholder="Digite sua pergunta..."
+        required
+      />
+      <button type="submit">Enviar</button>
+    </form>
+
+    {% if question %}
+    <h3>Sua pergunta:</h3>
+    <p>{{ question }}</p>
+
+    <h3>Resposta:</h3>
+    <div id="response">{{ answer }}</div>
+    {% endif %} {% if error %}
+    <p class="error">{{ error }}</p>
+    {% endif %}
+  </body>
+</html>
